@@ -7,17 +7,26 @@
 
 
 # seleciona a planilha com a ocorrencia das especies
-results <- read.csv("input/fulanus.csv", header = TRUE)
+dados_ocorrencia <- read.csv("input/fulanus.csv", header = TRUE)
 
-  # exclui linhas onde Lat ou Lon estao ausentes (NA)
-occ_data_na <- results %>%
+# exclui linhas onde Lat ou Lon estao ausentes (NA)
+dados_ocorrencia <- tidyr::drop_na(dados_ocorrencia, lon, lat)
+
+# 2. para fins didaticos, os passos de carregamento e limpeza dos dados
+# foram feitos em dois blocos de códigos, mas podem ser simplificados em
+# um único bloco.
+# o comando %>% eh utilizado para encadear as funcoes, basicamente o que ele diz
+# eh "pegue o resultado dessa linha e jogue como primeiro argumento
+# da proxima linha":
+dados_ocorrencia <- read.csv("input/fulanus.csv", header = TRUE) %>%
     tidyr::drop_na(lon, lat)
-summary(occ_data_na)
-  
+
+
+
 # limpeza de coordenadas! 
 # primeiro marca os pontos problematicos
 flags_spatial <- CoordinateCleaner::clean_coordinates(
-    x = occ_data_na,
+    x = dados_ocorrencia,
     species = "species",
     lon = "lon",
     lat = "lat",
@@ -42,12 +51,12 @@ flags_spatial %>% head
   summary(flags_spatial)
 
   # excluir os pontos marcados como problematicos
-occ_data_tax_date_spa <- occ_data_na %>% 
+occ_data_tax_date_spa <- dados_ocorrencia %>% 
     dplyr::filter(flags_spatial$.summary == TRUE)
   occ_data_tax_date_spa
 
   # resumo dos dados
-  occ_data_na$species %>% table
+  dados_ocorrencia$species %>% table
   occ_data_tax_date_spa$species %>% table
 
 ### TODO: por que apenas um raster?
