@@ -6,7 +6,7 @@
 # -------------------------------------------------------------------------
 
 
-occ <- readr::read_csv("input/ocorrencias_bioticas_abioticas.csv")
+occ <- readr::read_csv("dados/ocorrencias_bioticas_abioticas.csv")
 
 
 for(i in occ$species %>% unique){

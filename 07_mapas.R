@@ -4,7 +4,7 @@
 
 # Prof. Luisa Maria Diele-Viegas e Juliana Hipolito
 # -------------------------------------------------------------------------
-occ <- readr::read_csv("input/ocorrencias_bioticas_abioticas.csv")
+occ <- readr::read_csv("dados/ocorrencias_bioticas_abioticas.csv")
 
 # Define nosso shapefile
 # o shapefile disponibilizado e dos biomas brasileiros. voce pode usar o que preferir. 

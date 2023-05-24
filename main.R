@@ -1,4 +1,4 @@
-source("utilities/install_and_load.R")
+source("source/utilities/install_and_load.R")
 install_and_load(libs = c(
     "tidyverse",
     "lubridate",
@@ -26,31 +26,11 @@ install_and_load(libs = c(
     "wallace"
     ))
 
-## check package version
-packageVersion("wallace")
-
-
 #Non-CRAN packages
 if (!require(wesanderson)) {
     devtools::install_github("karthik/wesanderson")} else {
         library(wesanderson)}
 
-occurences <- read_csv("input/microgroups_prevalence_persite.csv")
-occurences <- occurences %>%
-filter(meanAbu > 0)
-
-cpr_occurences <- occurences %>%
-filter(microGroup == "CPR") %>%
-dplyr::select(
-    microGroup,
-    latitude,
-    longitude)
-
-dpann_occurences <- occurences %>%
-filter(microGroup == "DPANN") %>%
-dplyr::select(
-    microGroup,
-    latitude,
-    longitude)
-
-dummy <- read_csv("input/fulanus.csv")
+source("source/01_variaveis_abioticas.R")
+source("source/02_filtragem_dos_dados.R")
+source("source/03_algoritmos.R")
