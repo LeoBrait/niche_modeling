@@ -1,5 +1,5 @@
 # Drawing a map of Brazil
-br <- rnaturalearth::ne_countries(country = "Brazil", returnclass = "sf")
+br <- readOGR("dados/shapes/Ceara.shp")
 
 # load world rasters names and stack in a single object
 tif_files_paths <- dir("dados/raster", pattern = ".tif", full.names = TRUE)
@@ -66,9 +66,10 @@ readr::write_csv(
 
 
 # selecao das variaveis correlacionadas
+# ALTERAÇAO: 0.8 -> 0.6
 variaveis_para_exclusao <- cor_table %>%
   corrr::as_matrix() %>%
-  caret::findCorrelation(cutoff = .6, names = TRUE, verbose = TRUE)
+  caret::findCorrelation(cutoff = .8, names = TRUE, verbose = TRUE)
 variaveis_para_exclusao
 
 

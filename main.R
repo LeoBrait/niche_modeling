@@ -23,7 +23,8 @@ install_and_load(libs = c(
     "spThin",
     "rgeos",
     "ENMeval",
-    "wallace"
+    "wallace",
+    "rgdal"
     ))
 
 #Non-CRAN packages
