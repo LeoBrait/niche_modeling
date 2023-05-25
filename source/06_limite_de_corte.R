@@ -29,8 +29,10 @@ for(i in occ$species %>% unique){
   # limites de corte - iremos considerar um limite m?nimo >0, de 30% e de 50%
   li_thrs <- list(
     lpt = min(thrs[thrs > 0]),
-    p10 = quantile(thrs[thrs > 0], .3),
-    p20 = quantile(thrs[thrs > 0], .5)
+    p10 = quantile(thrs[thrs > 0], .1),
+    p30 = quantile(thrs[thrs > 0], .3),
+    p60 = quantile(thrs[thrs > 0], .6),
+    p90 = quantile(thrs[thrs > 0], .9)
   )
 
   
@@ -47,9 +49,15 @@ for(i in occ$species %>% unique){
 
 }
 
-plot(ens_w >= li_thrs[[1]])
-plot(ens_w >= li_thrs[[2]])
-plot(ens_w >= li_thrs[[3]])
+
+
+plot(ens_w >= li_thrs[[2]], main = "Limite de corte 10%")
+plot(ens_w >= li_thrs[[3]], main = "Limite de corte 30%")
+plot(ens_w >= li_thrs[[4]], main = "Limite de corte 60%")
+plot(ens_w >= li_thrs[[5]], main = "Limite de corte 90%")
+
+### arrange these plots
+dev.copy2pdf(file = "results/limite_de_corte.pdf", width = 10, height = 10)
 
 getwd()
 # Estamos quase la! :)
