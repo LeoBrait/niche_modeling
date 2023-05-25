@@ -35,3 +35,4 @@ if (!require(wesanderson)) {
 source("source/01_variaveis_abioticas.R")
 source("source/02_filtragem_dos_dados.R")
 source("source/03_algoritmos.R")
+source()
