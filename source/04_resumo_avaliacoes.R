@@ -34,7 +34,7 @@ for(i in eva$species %>% unique){
   eva_table
   
   # exportando a avaliacao dos modelos
-  readr::write_csv(eva_table, paste0("results/script04/evaluation_summary_table_", i, ".csv"))
+  readr::write_csv(eva_table, paste0("results/evaluation_summary_table_", i, ".csv"))
   
   # boxplots
   
@@ -61,7 +61,7 @@ for(i in eva$species %>% unique){
             axis.text.x = element_text(size = 12),
             axis.text.y = element_text(size = 15), 
             axis.title = element_text(size = 17))
-    ggsave(paste0("results/script04/boxplot_jitter_an_", j, "_", i, ".tiff"), he = 20, wi = 30, un = "cm", dpi = 300)
+    ggsave(paste0("results/boxplot_jitter_an_", j, "_", i, ".png"), he = 20, wi = 30, un = "cm", dpi = 300)
     
   }
   

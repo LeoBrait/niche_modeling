@@ -1,6 +1,6 @@
 
 # seleciona a planilha com a ocorrencia das especies
-dados_ocorrencia <- read.csv("dados/fulanus.csv", header = TRUE)
+dados_ocorrencia <- read.csv("dados/ocorrencias/soldadinho.csv", header = TRUE)
 
 # exclui linhas onde Lat ou Lon estao ausentes (NA)
 dados_ocorrencia <- tidyr::drop_na(dados_ocorrencia, lon, lat)
@@ -11,9 +11,9 @@ dados_ocorrencia <- tidyr::drop_na(dados_ocorrencia, lon, lat)
 # o comando %>% eh utilizado para encadear as funcoes, basicamente o que ele diz
 # eh "pegue o resultado dessa linha e jogue como primeiro argumento
 # da proxima linha":
-dados_ocorrencia <- read.csv("dados/fulanus.csv", header = TRUE) %>%
+dados_ocorrencia <- read.csv(
+  "dados/ocorrencias/soldadinho.csv", header = TRUE) %>%
     tidyr::drop_na(lon, lat)
-
 
 # limpeza de coordenadas!
 # primeiro marca os pontos problematicos
@@ -30,11 +30,11 @@ flags_spatial <- CoordinateCleaner::clean_coordinates(
       "gbif", # raio ao redor da sede da GBIF
       "institutions", # raio de instituicoes de pesquisa em biodiversidade
       "seas", # pontos no mar
-      "urban", # pontos dentro de areas urbanas
       "validity", # ponto de fora do sistema de coordenadas
       "zeros" # zeros e pontos onde lat = lon
     )
   )
+
 
 # excluir os pontos marcados como problematicos
 dados_ocorrencia_limpos <- dados_ocorrencia %>%

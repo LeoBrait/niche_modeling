@@ -1,0 +1,4 @@
+species,algorithm,tss_mean,tss_sd,auc_mean,auc_sd
+Antilophi bokermanni,bioclim,0.767,0.073,0.915,0.04
+Antilophi bokermanni,glm,0.848,0.068,0.964,0.03
+Antilophi bokermanni,svm,0.83,0.076,0.926,0.051
