@@ -8,36 +8,37 @@
 
 
 # importando os diferentes modelos
-eva <- read_csv("results/predictions/eval_fulanus_fulanus.csv")
-eva
+eva <- read_csv("results/predictions/eval_antilophi_bokermanni.csv")
+
 
 # consenso por media ponderada
 # Utilizaremos como limite inferior AUCs com valores de 0.8
 
-auc_limit <- .8
+limite <- .8
+
 
 # algoritmos
 alg <- eva$algorithm %>% unique
-alg
+
 # fazendo o consenso
 for(i in eva$species %>% unique){
 
   # selecao de modelos = somente aqueles com AUC maior ou igual a 0.8
   eva_i <- eva %>% 
-    dplyr::filter(species == i, 
-                  auc >= auc_limit, 
+    dplyr::filter(species == i,
+                  tss_spec_sens >= limite,
                   algorithm %in% alg)
   
   # importando os modelos
-  enm <- eva_i %>% 
-    dplyr::select(file) %>% 
-    dplyr::pull() %>% 
+  enm <- eva_i %>%
+    dplyr::select(file) %>%
+    dplyr::pull() %>%
     raster::stack()
   
   # AUC
-  auc <- eva_i %>% 
-    dplyr::select(auc) %>% 
-    dplyr::mutate(auc = (auc - .5) ^ 2) %>% 
+  tss_spec_sens <- eva_i %>% 
+    dplyr::select(tss_spec_sens) %>% 
+    dplyr::mutate(tss_spec_sens = (tss_spec_sens - .5) ^ 2) %>%
     dplyr::pull()
   
   # padronizacao 
@@ -49,7 +50,7 @@ for(i in eva$species %>% unique){
 
   # consenso da media ponderada 
   ens <- enm[[1]]
-  ens[] <- apply(enm_st, 1, function(x){sum(x * auc) / sum(auc)})
+  ens[] <- apply(enm_st, 1, function(x){sum(x * tss_spec_sens) / sum(tss_spec_sens)})
   
   # diretorio de trabalho 
   

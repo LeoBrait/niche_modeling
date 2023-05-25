@@ -6,7 +6,7 @@
 # -------------------------------------------------------------------------
 
 
-occ <- readr::read_csv("dados/ocorrencias_bioticas_abioticas.csv")
+occ <- tabela_referencia
 
 
 for(i in occ$species %>% unique){
@@ -38,7 +38,7 @@ for(i in occ$species %>% unique){
     
     # exporta os dados obtidos 
     raster::writeRaster(x = ens_w >= li_thrs[[j]], 
-                        filename = paste0("consenso_thr_", names(li_thrs)[j], "_", i), 
+                        filename = paste0("results/consenso/consenso_thr_", names(li_thrs)[j], "_", i), 
                         format = "GTiff", 
                         options = c("COMPRESS=DEFLATE"), 
                         overwrite = TRUE)
