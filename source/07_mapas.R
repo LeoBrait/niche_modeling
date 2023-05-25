@@ -30,9 +30,9 @@ br <- poligono_geografico
     stringr::str_subset(".tif$") %>% 
     raster::stack()
   
-  ens <- dir("results/nichos_modelados", pattern = "consenso_cortadop20", recursive = TRUE, full.names = TRUE) %>% 
-    stringr::str_subset(".tif$") %>% 
-    raster::stack()
+  # ens <- dir("results/nichos_modelados", pattern = "consenso_cortadop20", recursive = TRUE, full.names = TRUE) %>% 
+  #   stringr::str_subset(".tif$") %>% 
+  #   raster::stack()
 j <- 1
   # gerando os mapas!
       #for(j in ens %>% raster::nlayers() %>% seq){
@@ -71,10 +71,10 @@ j <- 1
         map
         
         # exportando os mapas
-        ggsave(paste0("Presente_",i, ".tiff"), map, wi = 20, he = 20, un = "cm", dpi = 300, comp = "lzw") 
+        ggsave(paste0("results/Presente_",i, ".tiff"), map, wi = 20, he = 20, un = "cm", dpi = 300, comp = "lzw") 
         # inserir pro paste0 se necessario ,names(ens[[j]])
-              }
+       #       }
     
-      }
+      #}
   
   
