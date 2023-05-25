@@ -36,15 +36,15 @@ for(i in eva$species %>% unique){
     raster::stack()
   
   # AUC
-  tss_spec_sens <- eva_i %>% 
-    dplyr::select(tss_spec_sens) %>% 
+  tss_spec_sens <- eva_i %>%
+    dplyr::select(tss_spec_sens) %>%
     dplyr::mutate(tss_spec_sens = (tss_spec_sens - .5) ^ 2) %>%
     dplyr::pull()
   
-  # padronizacao 
+  # padronizacao
   print("Pode demorar... mas vai dar bom!")
-  enm_st <- enm %>% 
-    values %>% 
+  enm_st <- enm %>%
+    values %>%
     vegan::decostand("range", na.rm = TRUE)
   print("N?o disse? Sucesso!")
 
@@ -54,9 +54,10 @@ for(i in eva$species %>% unique){
   
   # diretorio de trabalho 
   
-  # exporta o ensemble 
+  # exporta o ensemble
+  # isso é o consenso final.
   raster::writeRaster(x = ens, 
-                      filename = paste0("presente_", i), 
+                      filename = paste0("results/ensemble/presente_", i), 
                       format = "GTiff", 
                       options = c("COMPRESS=DEFLATE"), 
                       overwrite = TRUE)

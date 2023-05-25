@@ -30,11 +30,11 @@ for (i in avaliacoes$species %>% unique){
       auc_mean = mean(auc),
       auc_sd = sd(auc))
 
-
   # exportando a avaliacao dos modelos
+  #dado de consumo interno
   readr::write_csv(
     avaliacoes_table,
-    paste0("results/avaliacao_modelos_", i, ".csv"))
+    paste0("results/predictions/avaliacao_sumarizadas", i, ".csv"))
 
   # boxplots
 

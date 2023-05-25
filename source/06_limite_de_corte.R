@@ -17,13 +17,13 @@ for(i in occ$species %>% unique){
   
   
   # importando os dados gerados
-  ens_w <- dir("results/predictions", pattern = ".tif", full.names = TRUE) %>% 
+  ens_w <- dir("results/ensemble/", pattern = ".tif", full.names = TRUE) %>%
     raster::stack()
   
-  # extraindo valores considerando a distribuicao 
-  thrs <- occ %>% 
-    dplyr::filter(species == i) %>% 
-    dplyr::select(lon, lat) %>% 
+  # extraindo valores considerando a distribuicao
+  thrs <- occ %>%
+    dplyr::filter(species == i) %>%
+    dplyr::select(lon, lat) %>%
     raster::extract(ens_w, .)
   
   # limites de corte - iremos considerar um limite m?nimo >0, de 30% e de 50%
@@ -38,14 +38,18 @@ for(i in occ$species %>% unique){
     
     # exporta os dados obtidos 
     raster::writeRaster(x = ens_w >= li_thrs[[j]], 
-                        filename = paste0("results/consenso/consenso_thr_", names(li_thrs)[j], "_", i), 
+                        filename = paste0("results/nichos_modelados/consenso_cortado", names(li_thrs)[j], "_", i),  #nolint
                         format = "GTiff", 
                         options = c("COMPRESS=DEFLATE"), 
                         overwrite = TRUE)
-    
+
   }
 
 }
+
+plot(ens_w >= li_thrs[[1]])
+plot(ens_w >= li_thrs[[2]])
+plot(ens_w >= li_thrs[[3]])
 
 getwd()
 # Estamos quase la! :)
