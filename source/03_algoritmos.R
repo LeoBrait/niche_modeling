@@ -4,7 +4,7 @@ rasters <- dir(
   raster::brick()
 
 # definindo os parametros a priori
-replica <- 20 #numeros de replicas que serao usadas no modelo
+replica <- 100 #numeros de replicas que serao usadas no modelo
 partition <- .7 #definindo aqui que serao 70% treino, 30% teste!
 
 # algoritmos = vamos usar um loop para rodar todos de uma vez!
@@ -26,7 +26,7 @@ for (i in unique(tabela_referencia$species)){ # para cada especie
     dplyr::rename(lon = x, lat = y) %>%
     dplyr::mutate(id = seq(nrow(.)))
 
-  pabsent_species_glm <- dismo::randomPoints(mask = rasters, n = 10000) %>%
+  pabsent_species_glm <- dismo::randomPoints(mask = rasters, n = 1000) %>%
     tibble::as_tibble() %>%
     dplyr::rename(lon = x, lat = y) %>%
     dplyr::mutate(id = seq(nrow(.)))

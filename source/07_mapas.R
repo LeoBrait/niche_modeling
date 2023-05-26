@@ -71,7 +71,7 @@ j <- 1
         map
         
         # exportando os mapas
-        ggsave(paste0("results/Presente_",i, ".tiff"), map, wi = 20, he = 20, un = "cm", dpi = 300, comp = "lzw") 
+        ggsave(paste0("results/Presente_",i, ".png"), map, wi = 20, he = 20, un = "cm", dpi = 300) 
         # inserir pro paste0 se necessario ,names(ens[[j]])
        #       }
     

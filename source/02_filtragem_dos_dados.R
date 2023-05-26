@@ -45,8 +45,7 @@ dados_ocorrencia$species %>% table
 dados_ocorrencia_limpos$species %>% table
 
 
-raster_de_referencia <- raster::raster(
-    "dados/raster_reduced/raster_br_res05_wc2.1_5m_bio_3.tif")
+raster_de_referencia <- raster_brasil_baixaresolucao[[1]]
 
 #Question: What is happening here?
 raster_de_referencia[!is.na(raster_de_referencia)] <- raster::cellFromXY(
@@ -54,16 +53,16 @@ raster_de_referencia[!is.na(raster_de_referencia)] <- raster::cellFromXY(
   raster::rasterToPoints(raster_de_referencia)[, 1:2])
 
 
-landscapetools::show_landscape(raster_de_referencia) +
-    geom_polygon(
-      data = raster_de_referencia %>%
-        raster::rasterToPolygons() %>%
-        fortify,
-      aes(x = long, y = lat, group = group),
-      fill = NA,
-      color = "black",
-      size = .1) +
-    theme(legend.position = "none")
+# landscapetools::show_landscape(raster_de_referencia) +
+#     geom_polygon(
+#       data = raster_de_referencia %>%
+#         raster::rasterToPolygons() %>%
+#         fortify,
+#       aes(x = long, y = lat, group = group),
+#       fill = NA,
+#       color = "black",
+#       size = .1) +
+#     theme(legend.position = "none")
 
 # associa os dados de distribuicao apos limpeza com os rasters climaticos
 # selecionados e filtra a distribucao com base nos dados taxonomicos (sp)

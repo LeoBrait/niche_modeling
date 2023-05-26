@@ -41,7 +41,7 @@ for(i in occ$species %>% unique){
     # exporta os dados obtidos 
     raster::writeRaster(x = ens_w >= li_thrs[[j]], 
                         filename = paste0("results/nichos_modelados/consenso_cortado", names(li_thrs)[j], "_", i),  #nolint
-                        format = "GTiff", 
+                        format = "GTiff",
                         options = c("COMPRESS=DEFLATE"), 
                         overwrite = TRUE)
 
@@ -49,15 +49,12 @@ for(i in occ$species %>% unique){
 
 }
 
+# plot(ens_w >= li_thrs[[2]], main = "Limite de corte 10%")
+# plot(ens_w >= li_thrs[[3]], main = "Limite de corte 30%")
+# plot(ens_w >= li_thrs[[4]], main = "Limite de corte 60%")
+# plot(ens_w >= li_thrs[[5]], main = "Limite de corte 90%")
 
 
-plot(ens_w >= li_thrs[[2]], main = "Limite de corte 10%")
-plot(ens_w >= li_thrs[[3]], main = "Limite de corte 30%")
-plot(ens_w >= li_thrs[[4]], main = "Limite de corte 60%")
-plot(ens_w >= li_thrs[[5]], main = "Limite de corte 90%")
 
-### arrange these plots
-dev.copy2pdf(file = "results/limite_de_corte.pdf", width = 10, height = 10)
 
-getwd()
 # Estamos quase la! :)

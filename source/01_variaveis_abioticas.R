@@ -60,7 +60,6 @@ cor_table <- corrr::correlate(abioticas_tabeladas, method = "spearman")
 sumario_correlacao <- cor_table %>%
   corrr::shave() %>%
   corrr::fashion()
-View(sumario_correlacao)
 
 # e exporta a tabela
 readr::write_csv(
