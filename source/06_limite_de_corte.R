@@ -7,7 +7,7 @@
 
 
 occ <- tabela_referencia
-
+limite
 
 for(i in occ$species %>% unique){
   
@@ -38,16 +38,25 @@ for(i in occ$species %>% unique){
   
   for(j in li_thrs %>% length %>% seq){
     
-    # exporta os dados obtidos 
+    # exporta os dados obtidos em tiff
     raster::writeRaster(x = ens_w >= li_thrs[[j]], 
                         filename = paste0("results/nichos_modelados/consenso_cortado", names(li_thrs)[j], "_", i),  #nolint
                         format = "GTiff",
                         options = c("COMPRESS=DEFLATE"), 
                         overwrite = TRUE)
+     
+     # exporta os dados obtidos em png
+    output_file <- paste0(
+    "results/nichos_modelados/consenso_cortado", names(li_thrs)[j], "_", i, ".png")
+    png(output_file)
+    plot(ens_w >= li_thrs[[j]], main = paste("Limite de corte", names(li_thrs)[j]))
+    dev.off()
 
   }
 
 }
+
+
 
 # plot(ens_w >= li_thrs[[2]], main = "Limite de corte 10%")
 # plot(ens_w >= li_thrs[[3]], main = "Limite de corte 30%")

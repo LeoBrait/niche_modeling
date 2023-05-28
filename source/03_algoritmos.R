@@ -4,7 +4,7 @@ rasters <- dir(
   raster::brick()
 
 # definindo os parametros a priori
-replica <- 100 #numeros de replicas que serao usadas no modelo
+replica <- 1 #numeros de replicas que serao usadas no modelo
 partition <- .7 #definindo aqui que serao 70% treino, 30% teste!
 
 # algoritmos = vamos usar um loop para rodar todos de uma vez!
