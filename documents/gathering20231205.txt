@@ -1,0 +1,39 @@
+TÍTULOS
+T1: Adequabilidade ambiental e estressores da espécie endêmica soldadinho Araripe em Unidades de Conservação X Y e Z
+
+
+PERGUNTAS PARA O TRABALHO PRESENTE:
+- Qual é o gradiente de adequabilidade embiental da espécie?
+- Dentro da área adequada, qual o impacto de uso do solo e incêndios?
+
+PERGUNTAS PARA UM TRABALHO FUTURO:
+- Quais são as regiões de refúgio da espécie?
+
+TAREFAS:
+- Vizualisar o raster de fogo e uso do solo sobrepostos aos dados de adequabilidade e unidades de conservação.
+- Avaliar qual o tipo de unidade de conservação.
+- Avaliar as datas de coleta.
+- Buscar contato com a ONG OASIS.
+- Selecionar uma base de dados e baixar dados de uso do solo.
+- Selecionar uma base de dados e baixar dados de incêndio.
+- Pesquisar quais são os principais estressores para pássaros em matas úmidas.
+- Pesquisar qual a melhor variável de incêndio para responder nossas perguntas.
+- Shapes de florestas úmidas.
+
+
+REVISTAS:
+- Perspectives in Ecology and Conservation
+	*Focar numa discussão sobre avaliação de impacto.
+
+BRAINSTORM
+Adicionar passado e presente para identificar áreas de refúgio.
+Trazer o shapefile de unidades de conservação.
+Dados de uso do solo (desmatamento, incêndios florestais, etc)
+Algorítimos de definição de nicho
+status de conservação.
+
+LEITURAS:
+https://doi.org/10.1016/j.pecon.2020.10.005
+https://doi.org/10.1016/j.biocon.2019.05.055
+https://doi.org/10.7717/peerj.14882
+https://www.researchgate.net/profile/Marinez-Siqueira/publication/343616882_Could_Protected_Areas_in_Brazil's_Semi-Arid_Conserve_Endangered_Birds_Facing_Climatic_and_Land_Cover_Changes/links/5f5a61824585154dbbc86270/Could-Protected-Areas-in-Brazils-Semi-Arid-Conserve-Endangered-Birds-Facing-Climatic-and-Land-Cover-Changes.pdf

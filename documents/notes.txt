@@ -1,0 +1,38 @@
+curva roc e auc(area under the curve)
+matriz de confusao com treino e teste (falsos positivos e falsos negativos)
+kappa, auc, tss e thresholds são medidas de desempenho dos
+modelos preditivos.
+
+Depois buscamos o consenso de modelos.
+O consenso considera o peso dos modelos com base na sua pontuações
+(a pontuação pode ser: roc, auc, etc)
+
+
+
+# Escolhas
+1. Mudamos o cut-off de correlaçao de 0.6 para 0.8
+ Com 0.6 15 variáveis eram excluídas
+ com 0.8 9 variáveis foram excluídas.
+
+2. removemos o filtro de areas urbanas
+ O filtro gerava problemas nas flags e impedia o código de executar.
+ Tambem consideramos que areas urbanas não interferem nos nossos dados.
+
+2.1 Os filtros escolhidos foram XYZ
+ As únicas flags que obtivemos foram referentes a dados duplicados.
+ O dado limpo tem 73 observações.
+
+3.0 Fizemos 20 replicas, porque nossa área para ser modelada é pequena e 
+não exige poder computacional muito grande.
+
+4.0 Nosso dado foi particionado em 0.7. Cogitamos aumentar o tamanho do dado 
+teste, mas isso implicaria em diminuir ainda mais o nosso dado de treino, que
+já era escasso, então decidimos manter a convenção.
+
+5.0 multiplicamos por 10 o nosso dado de pseudoausência para os modelos bioclim
+e SVM. Já para o pseudoausência do GLM utilizamos o n = 10k, seguindo as
+recomendações dadas em aula
+
+6.0 Escolhemos a avaliação tss, já que é uma analise que ganha desempenho com
+dados de ausência. (nossa espécie é endêmica). Também observamos que o auc
+concentrava os modelos na pontuação máxima, sendo um indicativo de overfit.

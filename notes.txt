@@ -1,8 +1,0 @@
-curva roc e auc(area under the curve)
-matriz de confusao com treino e teste (falsos positivos e falsos negativos)
-kappa, auc, tss e thresholds são medidas de desempenho dos
-modelos preditivos.
-
-Depois buscamos o consenso de modelos.
-O consenso considera o peso dos modelos com base na sua pontuações
-(a pontuação pode ser: roc, auc, etc)

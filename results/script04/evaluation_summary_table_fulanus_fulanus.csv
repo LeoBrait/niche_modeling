@@ -1,4 +1,0 @@
-species,algorithm,tss_mean,tss_sd,auc_mean,auc_sd
-Fulanus fulanus,bioclim,0.304,0.013,0.657,0.013
-Fulanus fulanus,glm,0.453,0.017,0.803,0.008
-Fulanus fulanus,svm,0.535,0.017,0.84,0.01

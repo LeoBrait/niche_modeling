@@ -1,0 +1,6 @@
+results/
+dados/raster_reduced/
+*.tif
+
+# Raster files
+data/predictions
