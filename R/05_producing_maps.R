@@ -84,4 +84,7 @@ map <- ggplot() +
     axis.title = element_text(size = 15, face = "plain")
   )
 
-ggsave(paste0("results/Presente_",i, ".png"), map, wi = 20, he = 20, un = "cm", dpi = 300) 
+ggsave(
+  "results/adequabilidade_final.png", 
+  map, wi = 20, he = 20, un = "cm", dpi = 300
+) 
