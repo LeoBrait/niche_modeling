@@ -8,6 +8,7 @@ library("tidyverse") #2.0.0
 library("raster") #3.6.23
 library("ggspatial") #1.1.9
 library("sf") #1.0.14
+library("ggpubr") #3.3.5
 
 thresholds <- c(
   "10p" = 0.1,
@@ -57,10 +58,11 @@ map <- ggplot() +
       tibble::as_tibble(),
     aes(x, y, fill = ensembled_soldadinho)
   ) +
-  geom_sf(data = conservation_units, fill = NA, color = "black", size = .3) +
+  geom_sf(data = conservation_units, fill = NA, color = "black", size = 5) +
   geom_point(
-    data = occurrencies, aes(lon, lat), size = 2, alpha = .7, shape = 1
+    data = occurrencies, aes(lon, lat), size = 2, alpha = .7, shape = 3, color = "red"
   ) +
+  theme_pubr() +
   scale_color_manual(values = "black", guide = guide_legend(order = 1)) +
   scale_fill_gradientn(
     colours = c("white", "green", "blue"), 
@@ -81,7 +83,7 @@ map <- ggplot() +
     legend.background = element_rect(
       fill = "white", size = 0.3, linetype = "solid", colour = "black"
     ),
-    axis.title = element_text(size = 15, face = "plain")
+    axis.title = element_text(size = 15, face = "plain"),
   )
 
 ggsave(
