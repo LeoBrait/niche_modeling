@@ -52,11 +52,15 @@ for(i in 1:length(thresholds)){
   dev.off()
 }
 ################################# Final Plot ###################################
+# Crie um objeto SF do Brasil
+brasil_sf <- st_read("data/shapes/BR_UF_2022.shp")
+
+# Crie o plot do mapa do Ceará
 map <- ggplot() +
   geom_raster(
     data = raster::rasterToPoints(ensembled_raster) %>% 
       tibble::as_tibble(),
-    aes(x, y, fill = ensembled_soldadinho)
+    aes(x, y, fill = log(ensembled_soldadinho))
   ) +
   geom_sf(data = conservation_units, fill = NA, color = "black", size = 5) +
   geom_point(
@@ -86,6 +90,21 @@ map <- ggplot() +
     axis.title = element_text(size = 15, face = "plain"),
   )
 
+# Crie o mini-mapa do Brasil com destaque no Ceará
+mini_map <- ggplot() +
+  geom_sf(data = brasil_sf, fill = "gray80", color = "black") +
+  geom_sf(data = brasil_sf %>% filter(NM_UF == "Ceará"), fill = "green", color = "black") + # Destaque para o Ceará
+  theme_void() # Remove todos os elementos do tema
+
+# Adicione o mini-mapa ao mapa do Ceará
+map <- map +
+  annotation_custom(
+    ggplotGrob(mini_map),
+    xmin =-43 , xmax =-41.8 , ymin = -9.4, ymax = -6.6
+  )
+
+# good xmin = -41.6, xmax = -40.5, ymin = -8.3, ymax = -6.7
+#x 1.1 y 1.6
 ggsave(
   "results/adequabilidade_final.png", 
   map, wi = 20, he = 20, un = "cm", dpi = 300
