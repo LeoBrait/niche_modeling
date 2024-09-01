@@ -47,7 +47,8 @@ for(i in 1:length(thresholds)){
   png(output_file)
   plot(
     ensembled_raster >= thresholds[i], 
-    main = paste("Limite de corte", sub("p", " %", names(thresholds)[i]))
+    main = paste("Limite de corte", sub("p", " %", names(thresholds)[i])),
+    cex.main = 2
   )
   dev.off()
 }
@@ -73,11 +74,11 @@ map <- ggplot() +
     values = c(0, 1)
   ) +
   labs(
-    x = "Longitude", y = "Latitude", fill = "Adequability", color = "Occurrence"
+    x = "Longitude", y = "Latitude", fill = "Adequability (log)", color = "Occurrence"
   ) +
   annotation_scale(location = "br", width_hint = .3) +
   annotation_north_arrow(
-    location = "br", which_north = "true", 
+    location = "br", which_north = "true",
     pad_x = unit(0, "cm"), pad_y = unit(.8, "cm"),
     style = north_arrow_fancy_orienteering
   ) +

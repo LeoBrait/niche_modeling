@@ -25,19 +25,19 @@ theme_bw() +
 theme(
   legend.position = "none",
   plot.title = element_text(face = "bold.italic", size = 20),
-  axis.text.x = element_text(size = 12),
-  axis.text.y = element_text(size = 15),
-  axis.title = element_text(size = 17)
+  axis.text.x = element_text(size = 20),
+  axis.text.y = element_text(size = 20),
+  axis.title = element_text(size = 22, face = "bold")
 ) +
-labs(x = "Algorithms") +
-ylim(c(-.01, 1.05)) +
+labs(x = "Algorithms", y = "AUC") +
+scale_x_discrete(labels = c("BIOCLIM", "GLM", "SVM")) +
+ylim(c(.3, 1.05)) +
 geom_boxplot(size = .5, fill = "gray90", color = "black") +
-geom_jitter(width = 0.2, size = 4, alpha = .5) +
-geom_hline(yintercept =.8, color = "red")
+geom_jitter(width = 0.2, size = 4, alpha = .5)
 
 ggsave(
   filename = "results/auc_performance.png",
-  width = 10,
+  width = 15,
   height = 10,
   dpi = 300
 )
@@ -48,19 +48,20 @@ theme_bw() +
 theme(
   legend.position = "none",
   plot.title = element_text(face = "bold.italic", size = 20),
-  axis.text.x = element_text(size = 12),
-  axis.text.y = element_text(size = 15),
-  axis.title = element_text(size = 17)
+  axis.text.x = element_text(size = 20),
+  axis.text.y = element_text(size = 20),
+  axis.title = element_text(size = 22, face = "bold")
 ) +
-labs(x = "Algorithms") +
-ylim(c(-.01, 1.05)) +
+labs(x = "Algorithms", y = "TSS") +
+scale_x_discrete(labels = c("BIOCLIM", "GLM", "SVM")) +
+ylim(c(.3, 1.05)) +
 geom_boxplot(size = .5, fill = "gray90", color = "black") +
 geom_jitter(width = 0.2, size = 4, alpha = .5) +
-geom_hline(yintercept =.5, color = "red")
+geom_hline(yintercept = .8, color = "red")
 
 ggsave(
   filename = "results/tss_performance.png",
-  width = 10,
+  width = 15,
   height = 10,
   dpi = 300
 )

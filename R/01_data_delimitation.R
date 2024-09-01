@@ -12,6 +12,7 @@ library("corrr") #0.4.4
 library("psych") #2.3.9
 library("CoordinateCleaner") #3.0.1
 library("rnaturalearth") #0.3.4
+library("caret") #6.0.88
 
 ############################## Ceara Delimitation ##############################
 brasil <- rnaturalearth::ne_countries(country = "Brazil", returnclass = "sf")
