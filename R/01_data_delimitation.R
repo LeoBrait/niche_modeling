@@ -92,7 +92,8 @@ flags_spatial <- CoordinateCleaner::clean_coordinates(
     "institutions", # raio de instituicoes de pesquisa em biodiversidade
     "seas", # pontos no mar
     "validity", # ponto de fora do sistema de coordenadas
-    "zeros" # zeros e pontos onde lat = lon
+    "zeros", # zeros e pontos onde lat = lon
+    "spatially_close"
   )
 )
 
